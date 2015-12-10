@@ -51,7 +51,6 @@ public class Hexadecimal implements Comparable {
     
     //Static Methods~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     
-    //THIS METHOD FAILS!!!
     //converts hexadecimal number as string to int and returns it, assumes valid String arguement
     public static int hexToDec( String s ) {
         
@@ -115,7 +114,13 @@ public class Hexadecimal implements Comparable {
     */
     public boolean equals( Object other ) { 
     	 
-    	//First, check for aliasing.
+    	 //Firstcheck that the object is not null
+    	 if(other == null) {
+    	 	//nullPointExc
+    	 	throw new NullPointerException("Error in equals(): Null objects cannot be compared\n");
+    	 }
+    	 
+    	//Next, check for aliasing.
     	boolean retVal = this == other;
      
     	//Next, use compareTo(),
@@ -138,16 +143,17 @@ public class Hexadecimal implements Comparable {
         else if( !(other instanceof Hexadecimal) ) {
             throw new ClassCastException("Error : compareTo() - invalid arguement, non-Hexadecimal object\n");
         }
-        else if( this._decNum == ((Hexadecimal)other)._decNum ) {
-            return(0);
-        }
-        else if( this._decNum > ((Hexadecimal)other)._decNum ) {
-            return(1);
-        }
         else {
-            return(-1);
+        	if( this._decNum == ((Hexadecimal)other)._decNum ) {
+            a		return(0);
+        	}
+        	else if( this._decNum > ((Hexadecimal)other)._decNum ) {
+            		return(1);
+        	}
+        	else {
+            		return(-1);
+        	}
         }
-        
     }
     
     //return calling object as hexadecimal number string
