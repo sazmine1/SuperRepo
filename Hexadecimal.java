@@ -7,7 +7,7 @@
 //Hexadecimal class 
 /*NOTE: All hexadecimal digits in UPPER case ONLY*/
 
-public class Hexadecimal {
+public class Hexadecimal implements Comparable {
     
     //Vars~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     private final static String HEXDIGITS = "0123456789ABCDEF";
@@ -132,7 +132,10 @@ public class Hexadecimal {
     */
     public int compareTo(Object other) {
         
-        if( !(other instanceof Hexadecimal) ) {
+        if(other == null) {
+        	throw new NullPointerException("Error: compareTo() - invalid argument, null object\n");
+        }
+        else if( !(other instanceof Hexadecimal) ) {
             throw new ClassCastException("Error : compareTo() - invalid arguement, non-Hexadecimal object\n");
         }
         else if( this._decNum == ((Hexadecimal)other)._decNum ) {
