@@ -109,25 +109,37 @@ public class Rational implements Comparable {
     //DEFINE compareTo method from Comparable interface HERE
     public int compareTo(Object o){
         
-        if( !(o instanceof Rational) ) {
-            return -2; //Returns -2 if Object o is not of class Rational 
+        if(o == null) {
+        	//nullPointExc
+        	throw new NullPointerException("Error in compareTo() : null objects cannot be compared\n");
         }
-        else if ((this.getP() * ((Rational)o).getQ()) == (((Rational)o).getP() * this.getQ()))  {
-	    return 0; //Returns 0 if the two numbers are equal
-    	}
-    	else if ((this.getP() * ((Rational)o).getQ()) > (((Rational)o).getQ() * this.getP())) {
-	    return ((this.getP()*((Rational)o).getQ())-(((Rational)o).getP()*this.getQ()));
-    	}//Returns 1 if the calling number is larger than the parameter
-    	else {
-	    return (-1);
-    	}//Returns -1 if the calling number is smaller than the parameter
-        
+        else if( o instanceof Rational ) {
+        	if ((this.getP() * ((Rational)o).getQ()) == (((Rational)o).getP() * this.getQ()))  {
+        		return 0; //Returns 0 if the two numbers are equal
+    		}
+    		else if ((this.getP() * ((Rational)o).getQ()) > (((Rational)o).getQ() * this.getP())) {
+	    	return ((this.getP()*((Rational)o).getQ())-(((Rational)o).getP()*this.getQ()));
+    		}//Returns difference of cross-multiplication if the calling number is larger than the parameter
+    		else {
+	    	return (-1);
+    		}//Returns -1 if the calling number is smaller than the parameter
+        }
+        else {
+        	//classCastExc
+        	throw new ClassCastException("Error in compareTo(): Objects of different classes cannot be conmpared\n");
+        }
     }
     
     //////////////////////     PHASE 4     ///////////////////
     public boolean equals( Object a ) {
- 
-	//First, check for aliasing.
+    	
+    	//First, check that the object is not null
+    	if ( a == null) {
+    		//nullPointerExc
+    		throw new NullPointerException("Error in equals(): Object is null and cannot be compared\n");
+    	}
+    	
+	//Next, check for aliasing.
 	boolean retVal = this == a;
  
 	//Next, if this and input Object are different objects,
@@ -148,18 +160,14 @@ public class Rational implements Comparable {
 		    //...and that its state variables match those of this Tile
 		    retVal = (_this.getP() == _a.getP()) && (_this.getQ() == _a.getQ());
 		}
-	    }				     
+	    }
+	    else {
+	    	//classCastExc
+	    	throw new ClassCastException("Error in equals(): Objects of different classes cannot be compared\n");
+	    }
 	}
 	return retVal;
     }
- 
-    /*
-      public interface Comparable {
-      int compareTo(Object o);
-        
-      //no, just rewrite the compareTo from phase 3!
-      }
-    */
   
     //main method for testing purposes
     public static void main(String[] args){
