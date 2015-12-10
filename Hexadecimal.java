@@ -114,11 +114,11 @@ public class Hexadecimal implements Comparable {
     */
     public boolean equals( Object other ) { 
     	 
-    	 //Firstcheck that the object is not null
-    	 if(other == null) {
-    	 	//nullPointExc
-    	 	throw new NullPointerException("Error in equals(): Null objects cannot be compared\n");
-    	 }
+	//Firstcheck that the object is not null
+	if(other == null) {
+	    //nullPointExc
+	    throw new NullPointerException("Error in equals(): Null objects cannot be compared\n");
+	}
     	 
     	//Next, check for aliasing.
     	boolean retVal = this == other;
@@ -138,21 +138,21 @@ public class Hexadecimal implements Comparable {
     public int compareTo(Object other) {
         
         if(other == null) {
-        	throw new NullPointerException("Error: compareTo() - invalid argument, null object\n");
+	    throw new NullPointerException("Error: compareTo() - invalid argument, null object\n");
         }
         else if( !(other instanceof Hexadecimal) ) {
             throw new ClassCastException("Error : compareTo() - invalid arguement, non-Hexadecimal object\n");
         }
         else {
-        	if( this._decNum == ((Hexadecimal)other)._decNum ) {
-            a		return(0);
-        	}
-        	else if( this._decNum > ((Hexadecimal)other)._decNum ) {
-            		return(1);
-        	}
-        	else {
-            		return(-1);
-        	}
+	    if( this._decNum == ((Hexadecimal)other)._decNum ) {
+		return(0);
+	    }
+	    else if( this._decNum > ((Hexadecimal)other)._decNum ) {
+		return(1);
+	    }
+	    else {
+		return(-1);
+	    }
         }
     }
     
@@ -208,4 +208,3 @@ public class Hexadecimal implements Comparable {
     }
     
 }
-
