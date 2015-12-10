@@ -15,7 +15,7 @@ public class Binary {
     /*=====================================
       default constructor
       pre:  n/a
-      post: initializes _decNum to 0, _binNum to "0"
+      post: initializes _decNum to 0, _binNum to "0" 
       =====================================*/
     public Binary() { 
 	/****** YOUR IMPLEMENTATION HURRR ******/
