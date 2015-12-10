@@ -172,20 +172,19 @@ public class Binary implements Comparable {
     public boolean equals( Object other ) { 
 	/****** YOUR IMPLEMENTATION HURRR ******/
 	 
-	//First, check for aliasing.
-	boolean retVal = this == other;
+	 //First, check that other is not null
+	 if(other == null) {
+	 	throw new NullPointerException("Error in equals(): Null objects cannot be compared\n");
+	 }
+	 
+	//Next, check for aliasing.
+    	boolean retVal = this == other;
+     
+    	//Next, use compareTo(),
+        retVal = this.compareTo(other)==0;
+     
+    	return retVal;
  
-	//Next, if this and input Object are different objects,
-        if ( !retVal )
- 
-	    //...check to see if input Object is a Tile
-	    retVal = other instanceof Binary
- 
-		//...and that its state variables match those of this Tile
-		&& this._binNum.equals(((Binary)other)._binNum)
-		&& this._decNum ==(((Binary) other)._decNum);
- 
-	return retVal;
     }
 
 
