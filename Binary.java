@@ -198,7 +198,10 @@ public class Binary {
     public int compareTo( Object other ) {
 	/****** YOUR IMPLEMENTATION HURRR ******/
 	int diff = 0;
-	if (other instanceof Binary) {
+	if (other == null) {
+		throw new NullPointerException("Error in compareTo() : object does not contain anything\n"); 
+	}
+	else if (other instanceof Binary) {
 	    if (this.equals(other)) {
 		diff = 0;
 	    }
@@ -249,7 +252,7 @@ public class Binary {
 	System.out.println( b1.compareTo(b4) ); //should be neg
 	System.out.println( b4.compareTo(b1) ); //should be pos
 	//			try{
-	System.out.println( b1.compareTo("Asdf") ); //should thorw Error
+	System.out.println( b1.compareTo("Asdf") ); //should throw ClassCast Error
 	//} //!!!!!!!!!!!!!!!!!!!!!!!!!
 	
 	/*=========================================
