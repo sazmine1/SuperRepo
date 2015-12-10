@@ -172,10 +172,10 @@ public class Binary implements Comparable {
     public boolean equals( Object other ) { 
 	/****** YOUR IMPLEMENTATION HURRR ******/
 	 
-	 //First, check that other is not null
-	 if(other == null) {
-	 	throw new NullPointerException("Error in equals(): Null objects cannot be compared\n");
-	 }
+	//First, check that other is not null
+	if(other == null) {
+	    throw new NullPointerException("Error in equals(): Null objects cannot be compared\n");
+	}
 	 
 	//Next, check for aliasing.
     	boolean retVal = this == other;
@@ -198,20 +198,22 @@ public class Binary implements Comparable {
 	/****** YOUR IMPLEMENTATION HURRR ******/
 	int diff = 0;
 	if (other == null) {
-		throw new NullPointerException("Error in compareTo() : object does not contain anything\n"); 
+		//nulPointExc
+	    throw new NullPointerException("Error in compareTo() : object does not contain anything\n"); 
 	}
 	else if (other instanceof Binary) {
 	    if (this.equals(other)) {
 		diff = 0;
 	    }
 	    if (this._decNum >((Binary)other)._decNum) {
-		diff = this._decNum -((Binary)other)._decNum;
+		diff = 1;
 	    }
 	    else {
-		diff = this._decNum -((Binary)other)._decNum;		
+		diff = -1;		
 	    }
 	}
 	else {
+		//classCastExc
 	    throw new ClassCastException("Error in compareTo() : parameter not of class Binary\n");
 	}
 	return diff;
