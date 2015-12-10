@@ -110,23 +110,23 @@ public class Rational implements Comparable {
     public int compareTo(Object o){
         
         if(o == null) {
-        	//nullPointExc
-        	throw new NullPointerException("Error in compareTo() : null objects cannot be compared\n");
+	    //nullPointExc
+	    throw new NullPointerException("Error in compareTo() : null objects cannot be compared\n");
         }
         else if( o instanceof Rational ) {
-        	if ((this.getP() * ((Rational)o).getQ()) == (((Rational)o).getP() * this.getQ()))  {
-        		return 0; //Returns 0 if the two numbers are equal
-    		}
-    		else if ((this.getP() * ((Rational)o).getQ()) > (((Rational)o).getQ() * this.getP())) {
-	    	return ((this.getP()*((Rational)o).getQ())-(((Rational)o).getP()*this.getQ()));
-    		}//Returns difference of cross-multiplication if the calling number is larger than the parameter
-    		else {
+	    if ((this.getP() * ((Rational)o).getQ()) == (((Rational)o).getP() * this.getQ()))  {
+		return 0; //Returns 0 if the two numbers are equal
+	    }
+	    else if ((this.getP() * ((Rational)o).getQ()) > (((Rational)o).getP() * this.getQ())) {
+	    	return (1);
+	    }//Returns 1 if the calling number is larger than the parameter
+	    else {
 	    	return (-1);
-    		}//Returns -1 if the calling number is smaller than the parameter
+	    }//Returns -1 if the calling number is smaller than the parameter
         }
         else {
-        	//classCastExc
-        	throw new ClassCastException("Error in compareTo(): Objects of different classes cannot be conmpared\n");
+	    //classCastExc
+	    throw new ClassCastException("Error in compareTo(): Objects of different classes cannot be conmpared\n");
         }
     }
     
@@ -135,8 +135,8 @@ public class Rational implements Comparable {
     	
     	//First, check that the object is not null
     	if ( a == null) {
-    		//nullPointerExc
-    		throw new NullPointerException("Error in equals(): Object is null and cannot be compared\n");
+	    //nullPointerExc
+	    throw new NullPointerException("Error in equals(): Object is null and cannot be compared\n");
     	}
     	
 	//Next, check for aliasing.
